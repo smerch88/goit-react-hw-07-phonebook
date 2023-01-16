@@ -7,10 +7,19 @@ import { setFilter } from 'redux/filter/filterSlice';
 import { SimpleGrid, Text, Title } from '@mantine/core';
 import { getContacts } from 'redux/selectors';
 import { addContact, removeContact } from 'redux/operations';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 export const App = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 500,
+    });
+  }, []);
 
   const deleteUser = userId => {
     dispatch(removeContact(userId));
@@ -35,14 +44,14 @@ export const App = () => {
   return (
     <>
       <SimpleGrid cols={1} spacing="md">
-        <Title order={1} size="h1">
+        <Title order={1} size="h1" data-aos="zoom-in">
           Phonebook
         </Title>
         <ContactForm addUser={addUser} />
-        <Title order={2} size="h2">
+        <Title order={2} size="h2" data-aos="zoom-in">
           Contacts
         </Title>
-        <Text fw={400}>
+        <Text fw={400} data-aos="zoom-in">
           There are {contacts.length} contacts in the Phonebook.
         </Text>
         <Filter setFilterValue={setFilterValue} />

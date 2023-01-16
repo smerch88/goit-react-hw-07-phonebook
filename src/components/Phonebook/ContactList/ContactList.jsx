@@ -55,7 +55,7 @@ export const ContactList = ({ deleteUser }) => {
               )
               .map((val, index, array) => array[array.length - 1 - index])
               .map(contact => (
-                <li key={contact.id}>
+                <li key={contact.id} data-aos="zoom-in">
                   <Box
                     sx={theme => ({
                       backgroundColor:
