@@ -6,10 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact, removeContact } from 'redux/contacts/contactsSlice';
 import { setFilter } from 'redux/filter/filterSlice';
 import { SimpleGrid } from '@mantine/core';
+import { getContacts } from 'redux/selectors';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.contacts);
+  const contacts = useSelector(getContacts);
 
   const deleteUser = userId => {
     dispatch(removeContact(userId));

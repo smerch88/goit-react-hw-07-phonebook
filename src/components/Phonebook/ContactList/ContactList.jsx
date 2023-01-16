@@ -3,13 +3,19 @@ import { Box, Button } from '@mantine/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
+import {
+  getContacts,
+  getError,
+  getFilter,
+  getIsLoading,
+} from 'redux/selectors';
 
 export const ContactList = ({ deleteUser }) => {
   const dispatch = useDispatch();
-  // const contacts = useSelector(state => state.contacts.contacts);
-  const filterValue = useSelector(state => state.filter.filter);
-  // Отримуємо частини стану
-  const { contacts, isLoading, error } = useSelector(state => state.contacts);
+  const filterValue = useSelector(getFilter);
+  const contacts = useSelector(getContacts);
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
 
   console.log(contacts);
 
