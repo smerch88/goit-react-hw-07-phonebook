@@ -35,6 +35,7 @@ export const ContactList = ({ deleteUser }) => {
                 .toLowerCase()
                 .includes(filterValue.trim().toLowerCase())
             )
+            .map((val, index, array) => array[array.length - 1 - index])
             .map(contact => (
               <li key={contact.id}>
                 <Box
