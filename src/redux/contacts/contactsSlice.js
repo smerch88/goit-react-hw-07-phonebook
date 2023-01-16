@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchContacts } from 'redux/operations';
 
 const initialState = {
   contacts: [
@@ -18,18 +19,17 @@ const contactsSlice = createSlice({
     addContact: (state, action) => {
       state.contacts = [action.payload, ...state.contacts];
     },
-    // Виконається в момент старту HTTP-запиту
-    fetchingInProgress(state) {
+  },
+  extraReducers: {
+    [fetchContacts.pending](state) {
       state.isLoading = true;
     },
-    // Виконається якщо HTTP-запит завершився успішно
-    fetchingSuccess(state, action) {
+    [fetchContacts.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
       state.contacts = action.payload;
     },
-    // Виконається якщо HTTP-запит завершився з помилкою
-    fetchingError(state, action) {
+    [fetchContacts.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
     },
