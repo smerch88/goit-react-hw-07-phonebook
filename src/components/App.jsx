@@ -3,10 +3,10 @@ import { ContactList } from './Phonebook/ContactList/ContactList';
 import { Filter } from './Phonebook/Filter/Filter';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, removeContact } from 'redux/contacts/contactsSlice';
 import { setFilter } from 'redux/filter/filterSlice';
 import { SimpleGrid } from '@mantine/core';
 import { getContacts } from 'redux/selectors';
+import { addContact, removeContact } from 'redux/operations';
 
 export const App = () => {
   const dispatch = useDispatch();
