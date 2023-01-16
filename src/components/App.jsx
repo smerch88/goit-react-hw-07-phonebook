@@ -4,7 +4,7 @@ import { Filter } from './Phonebook/Filter/Filter';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/filter/filterSlice';
-import { SimpleGrid } from '@mantine/core';
+import { SimpleGrid, Title } from '@mantine/core';
 import { getContacts } from 'redux/selectors';
 import { addContact, removeContact } from 'redux/operations';
 
@@ -34,10 +34,14 @@ export const App = () => {
 
   return (
     <>
-      <SimpleGrid cols={1} spacing="xl">
-        <h1>Phonebook</h1>
+      <SimpleGrid cols={1} spacing="md">
+        <Title order={1} size="h1">
+          Phonebook
+        </Title>
         <ContactForm addUser={addUser} />
-        <h2>Contacts</h2>
+        <Title order={2} size="h2">
+          Contacts
+        </Title>
         <Filter setFilterValue={setFilterValue} />
         <ContactList deleteUser={deleteUser} />
       </SimpleGrid>

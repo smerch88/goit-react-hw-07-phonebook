@@ -1,5 +1,13 @@
 import PropTypes from 'prop-types';
-import { Box, Button } from '@mantine/core';
+import {
+  Box,
+  Button,
+  Center,
+  Flex,
+  Loader,
+  ScrollArea,
+  Text,
+} from '@mantine/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
@@ -24,47 +32,68 @@ export const ContactList = ({ deleteUser }) => {
   }, [dispatch]);
   return (
     <>
-      {isLoading && <p>Loading tasks...</p>}
+      {isLoading && (
+        <Center>
+          <Loader variant="dots" size="xl" />
+        </Center>
+      )}
       {error && <p>{error}</p>}
-      <ul>
-        {contacts.length > 0 &&
-          contacts
-            .filter(contact =>
-              contact.name
-                .trim()
-                .toLowerCase()
-                .includes(filterValue.trim().toLowerCase())
-            )
-            .map((val, index, array) => array[array.length - 1 - index])
-            .map(contact => (
-              <li key={contact.id}>
-                <Box
-                  sx={theme => ({
-                    backgroundColor:
-                      theme.colorScheme === 'dark'
-                        ? theme.colors.dark[6]
-                        : theme.colors.gray[0],
-                    textAlign: 'center',
-                    padding: theme.spacing.xl,
-                    borderRadius: theme.radius.md,
-                    cursor: 'pointer',
-
-                    '&:hover': {
+      <ScrollArea
+        style={{ height: '58vh' }}
+        type="scroll"
+        scrollbarSize={20}
+        scrollHideDelay={1500}
+      >
+        <ul>
+          {contacts.length > 0 &&
+            contacts
+              .filter(contact =>
+                contact.name
+                  .trim()
+                  .toLowerCase()
+                  .includes(filterValue.trim().toLowerCase())
+              )
+              .map((val, index, array) => array[array.length - 1 - index])
+              .map(contact => (
+                <li key={contact.id}>
+                  <Box
+                    sx={theme => ({
                       backgroundColor:
                         theme.colorScheme === 'dark'
-                          ? theme.colors.dark[5]
-                          : theme.colors.gray[1],
-                    },
-                  })}
-                >
-                  <div>
-                    {contact.name}: {contact.number}
-                  </div>
-                  <Button onClick={() => deleteUser(contact.id)}>Delete</Button>
-                </Box>
-              </li>
-            ))}
-      </ul>
+                          ? theme.colors.dark[6]
+                          : theme.colors.gray[0],
+                      textAlign: 'center',
+                      padding: theme.spacing.xl,
+                      borderRadius: theme.radius.md,
+
+                      '&:hover': {
+                        backgroundColor:
+                          theme.colorScheme === 'dark'
+                            ? theme.colors.dark[5]
+                            : theme.colors.gray[1],
+                      },
+                    })}
+                  >
+                    <Flex
+                      mih={50}
+                      gap="md"
+                      justify="space-between"
+                      align="center"
+                      direction="row"
+                      wrap="wrap"
+                    >
+                      <Text fw={400}>
+                        {contact.name}: {contact.number}
+                      </Text>
+                      <Button onClick={() => deleteUser(contact.id)}>
+                        Delete
+                      </Button>
+                    </Flex>
+                  </Box>
+                </li>
+              ))}
+        </ul>{' '}
+      </ScrollArea>
     </>
   );
 };

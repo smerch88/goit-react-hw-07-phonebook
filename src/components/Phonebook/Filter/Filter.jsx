@@ -13,7 +13,7 @@ export const Filter = ({ setFilterValue }) => {
   return (
     <>
       <label htmlFor="">
-        filter
+        Name Filter:
         <Input
           type="text"
           name="filter"
