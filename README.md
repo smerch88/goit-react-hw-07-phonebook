@@ -26,7 +26,7 @@
   <li><a href="https://redux.js.org/">Redux</a> - A Predictable State Container for JS Apps</li>
   <li><a href="https://mantine.dev/">Mantine</a> - The library used</li>
   <li><a href="https://michalsnik.github.io/aos/">AOS</a> - The library used</li>
-  <li><a href="https://docs.github.com/en/rest/guides/getting-started-with-the-rest-api?apiVersion=2022-11-28">GitHUB Api</a> - Api used</li>
+  <li><a href="https://mockapi.io/docs">Mockapi</a> - Api used</li>
 </ul>
 
 <h2>Authors</h2>
