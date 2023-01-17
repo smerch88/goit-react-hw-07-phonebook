@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/filter/filterSlice';
 import { SimpleGrid, Text, Title } from '@mantine/core';
 import { getContacts } from 'redux/selectors';
-import { addContact, removeContact } from 'redux/operations';
+import { addContact, removeContact } from 'redux/contacts/operations';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
