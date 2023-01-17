@@ -25,8 +25,6 @@ export const ContactList = ({ deleteUser }) => {
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
 
-  console.log(contacts);
-
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -92,7 +90,7 @@ export const ContactList = ({ deleteUser }) => {
                   </Box>
                 </li>
               ))}
-        </ul>{' '}
+        </ul>
       </ScrollArea>
     </>
   );
