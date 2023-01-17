@@ -42,7 +42,7 @@ export const ContactList = ({ deleteUser }) => {
         scrollbarSize={20}
         scrollHideDelay={1500}
       >
-        <ul>
+        <ul data-aos="zoom-in">
           {contacts.length > 0 &&
             contacts
               .filter(contact =>
@@ -53,7 +53,7 @@ export const ContactList = ({ deleteUser }) => {
               )
               .map((val, index, array) => array[array.length - 1 - index])
               .map(contact => (
-                <li key={contact.id} data-aos="zoom-in">
+                <li key={contact.id}>
                   <Box
                     sx={theme => ({
                       backgroundColor:
