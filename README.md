@@ -15,8 +15,8 @@
 <p>Clone repository or get the copy in any other way.</p>
 
 <pre>
-<code>mpm i</code>
-<code>mpm start</code>
+<code>npm i</code>
+<code>npm start</code>
 </pre>
 
 <h2>Built With</h2>
